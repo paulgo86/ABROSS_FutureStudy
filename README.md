@@ -18,6 +18,8 @@
 
 >## Payment
 > 회원들이 특정 등급에 대한 신청 및 결제에 대한 내역을 조회/승인 할 수 있도록 관리자 페이지 구성
+> 결제정보관련기록 Collection : vip , 현재 유효한 회원 : currentVip
+
 
 # REST API
 ># MEMBER
@@ -29,3 +31,12 @@
 >|'/login' |POST |string email <br> string passwd |Result:<br>1-정상<br>2-에러<br>3-아이디없음<br>4-비번틀림<br><br>Msg:<br>"desc msg" <br><br> Data:<br>{userDataObject}| 로그인시 아이디와 패스워드 확인 후,<br> 일치하면 last_login을 현재 시각으로 변경 |
 >|'/reqAuth'|POST|string email|Result:<br>1-정상<br>2-에러<br><br>Msg:<br>"desc msg"|해당 이메일 인증요청 처리<br>몽고DB 인증 토큰 생성<br>해당 토큰 요청이메일로 발송|
 >|'/chkAuth'|POST|string email <br> string aCode <br>|Result:<br>1-정상<br>2-에러<br><br>Msg:<br>"desc msg"|토큰 테이블 참조 후, 이메일 인증결과 리턴|
+
+<br>
+># VIP
+>| PATH | METHOD | PARAMS | RETURN | DESC |
+>|:----:|:------:|:------:|:------:|-----:|
+>|'/getAll'|POST|string utype|Result:<br>1-정상<br>2-에러<br>3-권한없음<br><br>MSG:<br>관련메세지<br><br>Data:<br>vip[{stat:'wait'/'ok',}]|모든 결제요청승인정보 조회|
+>|'/get'|POST|string utype<br>string id|Result:<br>1-정상<br>2-에러<br>3-권한없음<br><br>MSG:<br>관련메세지<br><br>Data:<br>vip|특정 회원의 모든 결제요청승인정보 조회|
+>|'/update'|POST|||결제가 확인된 회원에 한해 등급변경|
+>|'/request'|POST|||등급변경에 대한 요청|
