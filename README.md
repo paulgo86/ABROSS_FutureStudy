@@ -32,10 +32,11 @@
 >|'/reqAuth'|POST|string email|Result:<br>1-정상<br>2-에러<br><br>Msg:<br>"desc msg"|해당 이메일 인증요청 처리<br>몽고DB 인증 토큰 생성<br>해당 토큰 요청이메일로 발송|
 >|'/chkAuth'|POST|string email <br> string aCode <br>|Result:<br>1-정상<br>2-에러<br><br>Msg:<br>"desc msg"|토큰 테이블 참조 후, 이메일 인증결과 리턴|
 
-<br>
+
+
 ># VIP
 >| PATH | METHOD | PARAMS | RETURN | DESC |
->|:----:|:------:|:------:|:------:|-----:|
+>|:----:|:------:|:------:|:------:|:----:|
 >|'/getAll'|POST|string utype|Result:<br>1-정상<br>2-에러<br>3-권한없음<br><br>MSG:<br>관련메세지<br><br>Data:<br>vip[{stat:'wait'/'ok',}]|모든 결제요청승인정보 조회|
 >|'/get'|POST|string utype<br>string id|Result:<br>1-정상<br>2-에러<br>3-권한없음<br><br>MSG:<br>관련메세지<br><br>Data:<br>vip|특정 회원의 모든 결제요청승인정보 조회|
 >|'/update'|POST|||결제가 확인된 회원에 한해 등급변경|
